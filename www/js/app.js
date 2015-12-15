@@ -1,3 +1,4 @@
+var db;
 // Ionic Starter App
 
 // angular.module is a global place for creating, registering and retrieving Angular modules
@@ -5,9 +6,10 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
-.run(function($ionicPlatform) {
+angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter.services'])
+
+.run(function($ionicPlatform, $cordovaSQLite) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -18,9 +20,20 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
     if (window.StatusBar) {
       // org.apache.cordova.statusbar required
-      StatusBar.styleDefault();
+      StatusBar.styleLightContent();
     }
+     if(window.cordova)
+     {
+         db=$cordovaSQLite.openDB("videoclub_peliculas.db");
+     } else{
+         db=window.openDatabase("videoclub_peliculas.db", "1", "Aplicacion", -1);
+     }
+     
+      /*db = $cordovaSQLite.openDB("videoclub_peliculas.db");*/
+        $cordovaSQLite.execute(db, 'CREATE TABLE IF NOT EXISTS peliculas (id INTEGER PRIMARY KEY AUTOINCREMENT, nombre varchar(255), año varchar(255), genero varchar(255),sinopsis varchar(255),actores varchar(255))');
+
   });
+  
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
