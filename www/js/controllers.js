@@ -4,14 +4,14 @@ angular.module('starter.controllers', [])
     
     $scope.showAlert = function() {
      var alertPopup = $ionicPopup.alert({
-       title: 'Peliculas',
+       title: 'agenda',
        template: 'Datos guardados'
      });
     }
     
     $scope.guardar = function(persona){
         
-        $cordovaSQLite.execute(db, 'INSERT INTO peliculas (nombre,año,genero,sinopsis,actores) VALUES (?,?,?,?,?)', [persona.nombre,persona.año,persona.genero,persona.sinopsis,persona.actores])
+        $cordovaSQLite.execute(db, 'INSERT INTO agenda (nombre,año,genero,sinopsis,actores) VALUES (?,?,?,?,?)', [persona.nombre,persona.año,persona.genero,persona.sinopsis,persona.actores])
         .then(function(result) {
             $scope.statusMessage = "Registro guardado!";
         }, function(error) {
@@ -79,15 +79,15 @@ angular.module('starter.controllers', [])
   
   $scope.guardar=function(persona){
       
-      $cordovaSQLite.execute(db,'UPDATE peliculas set nombre=?,año=?,genero=?,sinopsis=?,actores=? where id =?',[persona.nombre,persona.año,persona.genero,persona.sinopsis,persona.actores,persona.id])
+      $cordovaSQLite.execute(db,'UPDATE agenda set nombre=?,año=?,genero=?,sinopsis=?,actores=? where id =?',[persona.nombre,persona.año,persona.genero,persona.sinopsis,persona.actores,persona.id])
       .then(function(result){
          $scope.statusMessage="Registro guardado!";
       },function(error){
            $scope.statusMessage="Error al guardar:"+ error.message;
       })
       
-      //console.log("Nombre:" +persona.nombre);
-     //console.log("ID:" +persona.id);
+      console.log("Nombre:" +persona.nombre);
+     console.log("ID:" +persona.id);
   }
   
   

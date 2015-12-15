@@ -13,7 +13,7 @@ angular.module('starter.services', [])
 
       chats = [];
 
-      $cordovaSQLite.execute(db, 'SELECT * FROM peliculas ORDER BY id DESC')
+      $cordovaSQLite.execute(db, 'SELECT * FROM agenda ORDER BY id DESC')
        .then(
           function(result) {
              if (result.rows.length > 0) {
@@ -36,7 +36,7 @@ angular.module('starter.services', [])
       return chats;
     },
     remove: function(chat) {
-      $cordovaSQLite.execute(db, 'DELETE FROM peliculas where id = ?',[chat.id])
+      $cordovaSQLite.execute(db, 'DELETE FROM agenda where id = ?',[chat.id])
       .then(function(result){
           statusMessage = "Borrado";
           chats.splice(chats.indexOf(chat), 1);
@@ -50,7 +50,7 @@ angular.module('starter.services', [])
 
         chats = [];
         
-        $cordovaSQLite.execute(db, 'SELECT * FROM peliculas where id = ?',[chatId])
+        $cordovaSQLite.execute(db, 'SELECT * FROM agenda where id = ?',[chatId])
        .then(
           function(result) {
                
