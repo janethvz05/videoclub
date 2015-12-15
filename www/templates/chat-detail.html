@@ -36,12 +36,14 @@
    
    </div>
    
-   <div class="padding">
-        <p ng-show="agregarForm.nombre.$error.required">Escriba el nombre de la pelicula</p>
+  <div class="padding">
+        <p ng-show="agregarForm.nombre.$error.required">Escriba el nombre</p>
         <p ng-show="agregarForm.año.$error.required">Escriba el año</p>
         <p ng-show="agregarForm.genero.$error.required">Escriba el genero</p>
         <p ng-show="agregarForm.sinopsis.$error.required">Escriba la sinopsis</p>
-        <p ng-show="agregarForm.actores.$error.required">Escriba el nombre de los actores</p>
+        <p ng-show="agregarForm.actores.$error.required">Escriba los actores</p>
+        
+       
         <p>{{ statusMessage }}</p>
     </div>
     

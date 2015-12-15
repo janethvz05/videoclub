@@ -23,7 +23,7 @@
 
 <label class="item item-input">
   <span class="input-label">Sinopsis</span>
-  <input type="tel" name="sinopsis" ng-model="persona.sinopsis" required>
+  <input type="text" name="sinopsis" ng-model="persona.sinopsis" required>
 </label>
 
 <label class="item item-input">
@@ -34,12 +34,14 @@
 </div>
 
 <div class="padding">
-<p ng-show="agregarForm.nombre.$error.required">Escriba el Nombre de la pelicula</p>
-        <p ng-show="agregarForm.apellido.$error.required">Escriba el Año</p>
-        <p ng-show="agregarForm.telefono.$error.required">Escriba el Genero</p>
-        <p ng-show="agregarForm.email.$error.required">Escriba la Sinopsis</p>
-        <p ng-show="agregarForm.actores.$error.required">Escriba el nombre de los actores</p>
-         <p>{{ statusMessage}} </p>
+        <p ng-show="agregarForm.nombre.$error.required">Escriba el nombre</p>
+        <p ng-show="agregarForm.año.$error.required">Escriba el año</p>
+        <p ng-show="agregarForm.genero.$error.required">Escriba el genero</p>
+        <p ng-show="agregarForm.sinopsis.$error.required">Escriba la sinopsis</p>
+        <p ng-show="agregarForm.actores.$error.required">Escriba los actores</p>
+         
+         
+         <p>{{ statusMessage }} </p>
 </div>
 <button class="icon-left ion-archive button button-dark" ng-disabled="agregaForm.$invalid" ng-click="guardar(persona)">
   Guardar
