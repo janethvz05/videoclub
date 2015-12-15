@@ -39,10 +39,7 @@
         <p ng-show="agregarForm.telefono.$error.required">Escriba el Genero</p>
         <p ng-show="agregarForm.email.$error.required">Escriba la Sinopsis</p>
         <p ng-show="agregarForm.actores.$error.required">Escriba el nombre de los actores</p>
-         
-        
-
-<p>{{ statusMessage}} </p>
+         <p>{{ statusMessage}} </p>
 </div>
 <button class="icon-left ion-archive button button-dark" ng-disabled="agregaForm.$invalid" ng-click="guardar(persona)">
   Guardar
