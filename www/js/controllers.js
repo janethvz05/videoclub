@@ -4,14 +4,14 @@ angular.module('starter.controllers', [])
     
     $scope.showAlert = function() {
      var alertPopup = $ionicPopup.alert({
-       title: 'agenda',
+       title: 'Agenda',
        template: 'Datos guardados'
      });
     }
     
     $scope.guardar = function(persona){
         
-        $cordovaSQLite.execute(db, 'INSERT INTO agenda (nombre,año,genero,sinopsis,actores) VALUES (?,?,?,?,?)', [persona.nombre,persona.año,persona.genero,persona.sinopsis,persona.actores])
+        $cordovaSQLite.execute(db, 'INSERT INTO agenda (nombre,apellido,telefono,email) VALUES (?,?,?,?)', [persona.nombre,persona.apellido,persona.telefono,persona.email])
         .then(function(result) {
             $scope.statusMessage = "Registro guardado!";
         }, function(error) {
@@ -73,24 +73,20 @@ angular.module('starter.controllers', [])
 .controller('ChatDetailCtrl', function($scope, $stateParams, Chats,$cordovaSQLite) {
   //alert($stateParams.chatId);
   //alert(Chats.get($stateParams.chatId));
-  //$scope.chat = Chats.get($stateParams.chatId);
-  
-  $scope.persona = Chats.get($stateParams.chatId);
-  
-  $scope.guardar=function(persona){
+ // $scope.chat = Chats.get($stateParams.chatId);
+ $scope.persona = Chats.get($stateParams.chatId);
+ 
+  $scope.guardar = function(persona){
       
-      $cordovaSQLite.execute(db,'UPDATE agenda set nombre=?,año=?,genero=?,sinopsis=?,actores=? where id =?',[persona.nombre,persona.año,persona.genero,persona.sinopsis,persona.actores,persona.id])
+      $cordovaSQLite.execute(db, 'UPDATE agenda set nombre=?,apellido=?,telefono=?,email=? where id= ?',[persona.nombre,persona.apellido,persona.telefono,persona.email,persona.id])
       .then(function(result){
-         $scope.statusMessage="Registro guardado!";
-      },function(error){
-           $scope.statusMessage="Error al guardar:"+ error.message;
+          $scope.statusMessage = "Registro guardado!";
+      }, function(error){
+          $scope.statusMessage = "Error al guardar: " + error.message;
       })
-      
-      console.log("Nombre:" +persona.nombre);
-     console.log("ID:" +persona.id);
+      //console.log(NOMBRE: "+persona.nombre);
+      //console.log("ID: "+persona.id);
   }
-  
-  
   
 })
 

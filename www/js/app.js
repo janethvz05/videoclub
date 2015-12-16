@@ -29,8 +29,8 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
          db=window.openDatabase("videoclub_agenda.db", "1", "Aplicacion", -1);
      }
      
-      /*db = $cordovaSQLite.openDB("videoclub_peliculas.db");*/
-        $cordovaSQLite.execute(db, 'CREATE TABLE IF NOT EXISTS agenda (id INTEGER PRIMARY KEY AUTOINCREMENT, nombre varchar(255), año varchar(255), genero varchar(255),sinopsis varchar(255),actores varchar(255))');
+      /*db = $cordovaSQLite.openDB("practica2_agenda.db");*/
+        $cordovaSQLite.execute(db, 'CREATE TABLE IF NOT EXISTS agenda (id INTEGER PRIMARY KEY AUTOINCREMENT, nombre varchar(255), apellido varchar(255), telefono varchar(255), email varchar(255))');
 
   });
   
